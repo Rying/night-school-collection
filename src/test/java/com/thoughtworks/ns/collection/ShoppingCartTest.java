@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ShoppingCartTest {
 
@@ -16,13 +16,13 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void should_get_product_amount() throws Exception {
+    public void should_get_amount() throws Exception {
         assertThat(shoppingCart.getAmount(), is(0));
     }
 
     @Test
     public void should_add_product() throws Exception {
-        shoppingCart.addProduct(new Product());
+        shoppingCart.add(new Product());
         assertThat(shoppingCart.getAmount(), is(1));
     }
 }

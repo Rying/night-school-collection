@@ -7,7 +7,7 @@ public class ShoppingCart {
         return amount;
     }
 
-    public void addProduct(Product product) {
+    public void add(Product product) {
         amount++;
     }
 }

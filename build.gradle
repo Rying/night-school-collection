@@ -1,7 +1,5 @@
 apply plugin: 'idea'
-apply plugin: 'maven'
-apply plugin: 'war'
-apply plugin: 'jetty'
+apply plugin: 'java'
 
 group = 'com.thoughtworks.ns.collection'
 version = '0.0.1'
