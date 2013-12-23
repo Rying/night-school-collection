@@ -1,5 +1,6 @@
 package com.thoughtworks.ns.collection;
 
+import com.google.common.collect.ArrayListMultimap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,7 +45,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void should_found_product_NULL() throws Exception {
+    public void should_found_product_unavailable() throws Exception {
         assertEquals(null,shoppingCart.findProduct("b"));
 //        assertThat(shoppingCart.findProduct("b").equals(null),is(true));
     }
@@ -57,51 +58,56 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void should_remove_product_a_not_exist() throws Exception {
+    public void should_remove_unavailable_product() throws Exception {
         assertThat(shoppingCart.remove("a"),is(nullValue()));
     }
 
     @Test
-    public void should_remove_product_a_exist() {
+    public void should_remove_available_product() {
         Product product = new Product("a");
         shoppingCart.add(product);
         assertThat(shoppingCart.remove("a").equals(product), is(true));
     }
 
     @Test
-    public void should_find_number_of_product() {
+    public void should_find_3_product() {
         for(int i = 0;i < 3;i++)
             shoppingCart.add(new Product("a"));
         assertThat(shoppingCart.findProductNum("a"), is(3));
     }
 
     @Test
-    public void should_product_a_have_price_5() {
+    public void should_product_a_values_5() {
         Product product = new Product("a", 5);
         assertThat(product.getPrice(), is(5.));
     }
 
     @Test
-    public void should_two_a_product_total_price_is_10() {
+    public void should_total_price_of_a_product_is_10() {
         shoppingCart.add(new Product("a" , 5));
         shoppingCart.add(new Product("a" , 5));
 
         assertThat(shoppingCart.totalPrice(), is(10.));
     }
 
-    public  Map products = new HashMap(){
-        {
-            put("a", Arrays.asList(new Double[]{5., 5., 5.}));
-            put("b", Arrays.asList(new Double[]{3.}));
-            put("c", Arrays.asList(new Double[]{2., 2.}));
-            put("d", Arrays.asList(new Double[]{1., 1., 1.,1.}));
-        };
-    };
-
     @Test
-    public void should_total_price_11() {
+    public void should_total_price_is_11() {
+        ArrayListMultimap products = ArrayListMultimap.create();
+
+        products.put("a", 5.);
+        products.put("a", 5.);
+        products.put("a", 5.);
+        products.put("b",3.);
+        products.put("b",3.);
+        products.put("c", 2.);
+        products.put("d",1.);
+        products.put("d",1.);
+        products.put("d",1.);
+        products.put("d",1.);
+        products.put("d",1.);
+
         shoppingCart.add(products);
-        assertThat(shoppingCart.totalPrice(), is(26.));
+        assertThat(shoppingCart.totalPrice(), is(28.));
     }
 
 }

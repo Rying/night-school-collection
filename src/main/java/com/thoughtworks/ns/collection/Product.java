@@ -1,11 +1,11 @@
 package com.thoughtworks.ns.collection;
 
-public class Product{
+public class Product {
     String name;
     private double price;
 
     public Product(String _name) {
-           name = _name;
+        name = _name;
     }
 
     public Product(String _name, double _price) {

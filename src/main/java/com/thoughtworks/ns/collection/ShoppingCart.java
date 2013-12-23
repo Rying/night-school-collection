@@ -1,63 +1,44 @@
 package com.thoughtworks.ns.collection;
 
-import com.google.common.collect.HashMultiset;
+import com.google.common.collect.*;
 
-import java.util.*;
 
 public class ShoppingCart {
-
-    private Map products;
-    private int amount;
+    private ArrayListMultimap products;
 
     public ShoppingCart() {
-        products = new HashMap<String,List<Double>>();
+        products = ArrayListMultimap.create();
     }
 
     public int getAmount() {
-        return amount;
+        return products.size();
     }
 
-    public void add(Product product){
-        if (products.containsKey(product.name))
-        {
-            ((List)products.get(product.name)).add(product.getPrice());
-        }
-        else
-        {
-            List<Double> list = new ArrayList();
-            list.add(product.getPrice());
-            products.put(product.name,list);
-        }
-        amount++;
+    public void add(Product product) {
+        products.put(product.name, product.getPrice());
     }
 
     public Product findProduct(String name) {
-        if(products.containsKey(name))
-            return new Product(name);
-        return null;
+        return products.containsKey(name) ? new Product(name) : null;
     }
 
     public Product remove(String name) {
-        Product product = findProduct(name);
-        products.remove(product);
-        return product;
+        return products.removeAll(name).size() == 0 ? null : new Product(name);
     }
 
     public int findProductNum(String name) {
-        new
-        return products.containsKey(name)?((List)products.get(name)).size():0;
+        return products.get(name).size();
     }
 
     public double totalPrice() {
         double totalPrice = 0.;
-        for (Object key : products.keySet()) {
-            List list = (List)products.get(key);
-            totalPrice += list.size()*(double)list.get(0);
+        for (Object value : products.values()) {
+            totalPrice += (double) value;
         }
         return totalPrice;
     }
 
-    public void add(Map<Integer, Product> _products) {
+    public void add(ArrayListMultimap<Integer, Product> _products) {
         products.putAll(_products);
     }
 }
