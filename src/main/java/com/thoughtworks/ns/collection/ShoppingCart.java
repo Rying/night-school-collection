@@ -32,10 +32,6 @@ public class ShoppingCart {
     }
 
     public Product findProduct(String name) {
-//        for (int i = 0;i<products.size();i++) {
-//            if (products.)
-//                return ((Product)products.get(i));
-//        }
         if(products.containsKey(name))
             return new Product(name);
         return null;
@@ -48,6 +44,7 @@ public class ShoppingCart {
     }
 
     public int findProductNum(String name) {
+        new
         return products.containsKey(name)?((List)products.get(name)).size():0;
     }
 
