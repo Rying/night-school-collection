@@ -38,7 +38,7 @@ public class ShoppingCart {
         return totalPrice;
     }
 
-    public void add(ArrayListMultimap<Integer, Product> _products) {
+    public void add(ArrayListMultimap _products) {
         products.putAll(_products);
     }
 }

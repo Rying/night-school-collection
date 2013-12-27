@@ -47,7 +47,6 @@ public class ShoppingCartTest {
     @Test
     public void should_found_product_unavailable() throws Exception {
         assertEquals(null,shoppingCart.findProduct("b"));
-//        assertThat(shoppingCart.findProduct("b").equals(null),is(true));
     }
 
     @Test
@@ -91,7 +90,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void should_total_price_is_11() {
+    public void should_total_price_is_28() {
         ArrayListMultimap products = ArrayListMultimap.create();
 
         products.put("a", 5.);

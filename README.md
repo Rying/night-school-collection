@@ -1,4 +1,4 @@
-郑大晔校: Java Collection &amp; Guava
+﻿郑大晔校: Java Collection &amp; Guava
 ======================
 
 ## 需求1：显示购物车中物品的数量，并可以向购物车中添加产品
@@ -49,3 +49,5 @@
     - 按产品名查找
     - 按产品名移除
     - 查询某种产品数量
+
+using ArrayListMultimap
